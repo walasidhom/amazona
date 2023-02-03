@@ -45,7 +45,7 @@ const NavigationBar = (props) => {
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto w-100" style={{marginLeft:'25rem'}}><SearchBox /></Nav>
+          <Nav className="me-auto w-100 justify-content-center"><SearchBox /></Nav>
           <Nav className="me-auto  w-100  justify-content-end">
               <Link to="/cart" className="nav-link">
                 Cart
