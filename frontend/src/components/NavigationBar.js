@@ -43,24 +43,20 @@ const NavigationBar = (props) => {
                     alt='amazona'/>
                 </Navbar.Brand>
               </LinkContainer>
-              <Nav className='me-auto'>
-                
-                  
-                <FontAwesomeIcon icon={faShoppingCart} className='icon' size='xl' />
-                <Link to='/Cart' className="nav-link" title='Cart'>
-                  
-                  {cartItems.length > 0 && 
-                    <Badge pill bg="danger" style={{ fontSize: 8 }}>
-                      {cartItems.reduce( (a,c)=> a+c.qty, 0)}</Badge>
-                  }
-                </Link>
-              </Nav>
-              
-                <SearchBox />
-              
-        
-              <Nav>
-                {userInfo ? (
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto w-100" style={{marginLeft:'25rem'}}><SearchBox /></Nav>
+          <Nav className="me-auto  w-100  justify-content-end">
+              <Link to="/cart" className="nav-link">
+                Cart
+                {cart.cartItems.length > 0 && (
+                  <Badge pill bg="danger" style={{fontSize:'rem'}}>
+                    {cart.cartItems.reduce((a, c) => a + c.qty, 0)}
+                  </Badge>
+                )}
+              </Link>
+          
+            {userInfo ? (
             <NavDropdown style={{paddingRight:'30px'}} title={userInfo.name} id="basic-nav-dropdown" >
                       <LinkContainer to="/profile" style={{fontSize:'1rem'}}>
                         <NavDropdown.Item >User Profile</NavDropdown.Item>
@@ -84,7 +80,8 @@ const NavigationBar = (props) => {
                     </Link>
                   )}
                                   
-                </Nav>
+          </Nav>
+          </Navbar.Collapse>
             </Container>
             
           </Navbar>
