@@ -4,7 +4,7 @@ import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { listOrderMine } from '../JS/Actions/orderActions';
 
 
@@ -32,8 +32,8 @@ const OrderHistoryScreen = () => {
               : error ? 
                   <MessageBox>{error}</MessageBox>
                   : (
-                      <table className='table'>
-                          <thead>
+                      <Table responsive>
+                        <thead>
                               <tr>
                                   <th>ID</th>
                                   <th>DATE</th>
@@ -69,7 +69,7 @@ const OrderHistoryScreen = () => {
                                 </tr>
                                 ))}
                           </tbody>
-                      </table>
+                      </Table>
                 )}
           </div>
   )
