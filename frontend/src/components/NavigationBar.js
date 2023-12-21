@@ -57,7 +57,7 @@ const NavigationBar = (props) => {
               </Link>
           
             {userInfo ? (
-            <NavDropdown style={{paddingRight:'30px'}} title={userInfo.name} id="basic-nav-dropdown" >
+            <NavDropdown title={userInfo.name} id="basic-nav-dropdown" >
                       <LinkContainer to="/profile" style={{fontSize:'1rem'}}>
                         <NavDropdown.Item >User Profile</NavDropdown.Item>
                       </LinkContainer>
@@ -78,7 +78,24 @@ const NavigationBar = (props) => {
                     <Link className="nav-link" to="/signin" >
                       Sign In
                     </Link>
-                  )}
+            )}
+            {userInfo && userInfo.isAdmin && (
+              <NavDropdown  title='Admin' id='admin-nav-dropdown' >
+                <LinkContainer to='/admin/dashboard' style={{fontSize:'1rem'}}>
+                  <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/productList' style={{fontSize:'1rem'}}>
+                  <NavDropdown.Item>Products</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/orderList' style={{fontSize:'1rem'}}>
+                  <NavDropdown.Item>Orders</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/userList' style={{fontSize:'1rem'}}>
+                  <NavDropdown.Item>Users</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            
+            )}
                                   
           </Nav>
           </Navbar.Collapse>

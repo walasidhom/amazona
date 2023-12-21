@@ -23,6 +23,10 @@ import { listProductCategories } from './JS/Actions/productActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
 import SearchScreen from './screens/SearchScreen';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
+import Dashboard from './screens/DashboardScreen';
+import DashboardScreen from './screens/DashboardScreen';
 function App() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
 
@@ -89,12 +93,16 @@ function App() {
               <Route path='/shipping' element={<ShippingAddressScreen />} />
               <Route path='/payment' element={<PaymentMethodScreen />} />
               <Route path='/placeorder' element={<PlaceOrderScreen />} />
-              <Route path='/order/:id' element={<OrderScreen />} />
-              <Route path="/orderhistory" element={<OrderHistoryScreen />} />
-              <Route path="/profile" element={<PrivateRoute />} >
-                <Route exact path='/profile' element={<ProfileScreen/>}/>
-              </Route>
+              <Route path='/order/:id' element={<ProtectedRoute><OrderScreen /></ProtectedRoute>} />
+              <Route path="/orderhistory" element={<ProtectedRoute ><OrderHistoryScreen /></ProtectedRoute>} />
+              <Route path="/profile" element={
+                <ProtectedRoute >
+                  <ProfileScreen/>
+                </ProtectedRoute>}
+              />
               <Route path="/search" element={<SearchScreen />} />
+              {/* Admin Route */}
+              <Route path='/admin/dashboard' element={ <AdminRoute><DashboardScreen /></AdminRoute>} />
               
             </Routes>
           </Container>

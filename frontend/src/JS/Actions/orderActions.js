@@ -13,6 +13,9 @@ import {
   ORDER_PAY_FAIL,
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
+  ORDER_SUMMARY_FAIL,
+  ORDER_SUMMARY_REQUEST,
+  ORDER_SUMMARY_SUCCESS,
 } from '../constants/orderConstants';
 import { getError } from '../../components/utils';
 import { toast } from 'react-toastify';
@@ -93,6 +96,27 @@ export const listOrderMine = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_MINE_LIST_FAIL,
+      payload: getError(error)
+    });
+    toast.error(getError(error));
+  }
+};
+
+export const summaryOrder = () => async (dispatch, getState) => {
+  dispatch({ type: ORDER_SUMMARY_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get('/api/orders/summary', {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    dispatch({ type: ORDER_SUMMARY_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_SUMMARY_FAIL,
       payload: getError(error)
     });
     toast.error(getError(error));
