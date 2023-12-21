@@ -84,7 +84,7 @@ const NavigationBar = (props) => {
                 <LinkContainer to='/admin/dashboard' style={{fontSize:'1rem'}}>
                   <NavDropdown.Item>Dashboard</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to='/admin/productList' style={{fontSize:'1rem'}}>
+                <LinkContainer to="/admin/products" style={{fontSize:'1rem'}}>
                   <NavDropdown.Item>Products</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/admin/orderList' style={{fontSize:'1rem'}}>

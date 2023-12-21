@@ -27,6 +27,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import Dashboard from './screens/DashboardScreen';
 import DashboardScreen from './screens/DashboardScreen';
+import ProductListScreen from './screens/ProductListScreen';
 function App() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
 
@@ -102,7 +103,15 @@ function App() {
               />
               <Route path="/search" element={<SearchScreen />} />
               {/* Admin Route */}
-              <Route path='/admin/dashboard' element={ <AdminRoute><DashboardScreen /></AdminRoute>} />
+              <Route path='/admin/dashboard' element={<AdminRoute><DashboardScreen /></AdminRoute>} />
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              />
               
             </Routes>
           </Container>
